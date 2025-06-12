@@ -1,0 +1,106 @@
+📡 Requisições HTTP disponíveis
+------------- USUÁRIOS: http://localhost:8080/usuario -------------
+    🔍 Buscar todos os usuários
+    GET /usuario
+    Retorna uma lista com todos os usuários cadastrados.
+
+    🔍 Buscar usuário por ID
+    GET /usuario/id/{id}
+    Parâmetro: id (inteiro)
+    Retorna o usuário correspondente ao ID informado.
+
+    🔍 Buscar usuário por nome
+    GET /usuario/nome/{nome}
+    Parâmetro: nome (string)
+    Retorna o usuário correspondente ao nome informado.
+
+    📝 Cadastrar novo usuário
+    POST /usuario/salvar
+    Body (JSON):
+
+        {
+          "nome": "",
+          "email": "",
+          "senha": ""
+        }
+
+        Retorna 201 Created se o cadastro for bem-sucedido.
+        Retorna 409 Conflict se o e-mail já estiver cadastrado.
+
+    🔐 Login do usuário
+    POST /usuario/login
+    Body (JSON):
+
+        {
+          "email": "",
+          "senha": ""
+        }
+
+        Retorna 200 OK com os dados do usuário se as credenciais forem válidas.
+        Retorna 401 Unauthorized caso contrário.
+
+    🗑️ Deletar usuário por ID
+    DELETE /usuario/id/{id}
+    Parâmetro: id (inteiro)
+    Remove o usuário correspondente ao ID informado.
+
+    🔁 Atualizar usuário
+    PUT /usuario/id/{id}
+    Parâmetro: id (inteiro)
+    Body (JSON):
+
+        {
+          "nome": "Novo Nome",
+          "email": "novo@email.com",
+          "senha": "novaSenha"
+        }
+        Atualiza os dados do usuário com o ID informado.
+
+
+------------- RECEITAS: http://localhost:8080/receita -------------
+    🔍 Buscar todas as receitas
+    GET /receita
+    Retorna uma lista com todas as receitas cadastradas.
+
+    🔍 Buscar receita por ID
+    GET /receita/id/{id}
+    Parâmetro: id (inteiro)
+    Retorna os dados da receita correspondente ao ID informado.
+
+    🔍 Buscar receitas de um usuário
+    GET /receita/usuario/{usuarioId}
+    Parâmetro: usuarioId (inteiro)
+    Retorna todas as receitas cadastradas pelo usuário com o ID informado.
+
+    📝 Cadastrar nova receita
+    POST /receita/salvar
+    Body (JSON):
+
+        {
+          "nome": "",
+          "ingredientes": "",
+          "serve": {int},
+          "descricao": "",
+          "tempoPreparo": {int}
+        }
+        Retorna 201 Created se o cadastro for bem-sucedido (caso esteja implementado corretamente no ReceitaService).
+        Retorna 400 Bad Request ou erro similar em caso de falha na validação.
+
+    🗑️ Deletar receita por ID
+    DELETE /receita/id/{id}
+    Parâmetro: id (inteiro)
+    Remove a receita correspondente ao ID informado.
+
+    🔁 Atualizar receita
+    PUT /receita/id/{id}
+    Parâmetro: id (inteiro)
+    Body (JSON):
+
+        {
+          "nome": "Novo Nome",
+          "ingredientes": "Novo/Novos ingredientes",
+          "serve": {int},
+          "descricao": "Nova descrição",
+          "tempoPreparo": {int}
+        }
+        Atualiza a receita com o ID informado
